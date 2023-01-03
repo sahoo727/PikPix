@@ -6,6 +6,7 @@ import { GoogleLogin } from 'react-google-login';
 import Input from './Input';
 import Icon from './Icon';
 import useStyles from './Styles';
+import { Box } from '@mui/system';
 // import './style.css';
 
 function Signin() {
@@ -14,6 +15,11 @@ function Signin() {
 
   const handleChange = () => {
 
+  }
+
+  const handleSwitch = () => {
+    console.log("yes");
+    setIsSignup((prevIsSignup) => !prevIsSignup);
   }
 
   const googleSuccess = async(res) => {
@@ -29,6 +35,8 @@ function Signin() {
   };
 
   return (
+    <> 
+    <Typography variant='h4'  component='div' align='center' gutterBottom paddingTop='1.5rem' > Welcome To <Box fontWeight='bold'>PikPix</Box></Typography>
     <Grid container spacing={5} padding='1.5rem'>
         <Grid  item md={5} xs={12} className={classes.grid}>
           <Paper className={classes.paper} elevation={3} >
@@ -87,15 +95,18 @@ function Signin() {
                 // isSignedIn={true}
                 cookiePolicy='single_host_origin'
               />
+
+              <Typography style={{cursor:'pointer', paddingTop:'1.5em'}} align='center' variant='subtitle1' onClick={handleSwitch}> {isSignup ? "Have an account? SignIn" : "Dont't have an account? SignUp"} </Typography>
             </form>
 
           </Paper>
         </Grid>
 
         <Grid  item md={7} xs={12}>
-            <Typography>hello</Typography>
+          <Typography>hello</Typography>
         </Grid>
     </Grid>
+    </>
     
   )
 }
